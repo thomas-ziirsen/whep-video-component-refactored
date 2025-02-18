@@ -36,7 +36,7 @@ export default class WhepVideoComponent extends HTMLElement {
       this.video.autoplay = autoplay ?? false;
       this.video.muted = muted ?? true;
 
-      this.dispatchEvent(new CustomEvent("onIsStreaming", { detail: { src } }));
+      this.dispatchEvent(new CustomEvent("onStreamIsInitializing", { detail: { src } }));
 
       setTimeout(() => {
         this.player.peer.onconnectionstatechange = (event) => {
