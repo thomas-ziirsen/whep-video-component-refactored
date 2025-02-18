@@ -2,8 +2,7 @@ import { WebRTCPlayer } from "@eyevinn/webrtc-player";
 
 export default class WhepVideoComponent extends HTMLElement {
 
-  static get observedAttributes() {
-  }
+  static get observedAttributes() {}
 
   constructor() {
     super();

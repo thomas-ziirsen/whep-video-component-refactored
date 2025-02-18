@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rm -rf dist/ && webpack --config webpack.config.js",
     "dev": "webpack-dev-server --hot",
-    "postversion": "git push && git push --tags",
+    "postversion": "git push && git push --tags"
   },
   "files": [
     "dist"
