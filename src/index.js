@@ -1,10 +1,8 @@
 import { WebRTCPlayer } from "@eyevinn/webrtc-player";
 
-const isSet = (value) => value === "" || !!value;
-
 export default class WhepVideoComponent extends HTMLElement {
+
   static get observedAttributes() {
-    return Object.values(ComponentAttribute.DYNAMIC);
   }
 
   constructor() {
