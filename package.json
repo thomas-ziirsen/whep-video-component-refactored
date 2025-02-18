@@ -1,5 +1,5 @@
 {
-  "name": "@eyevinn/whep-video-component",
+  "name": "@thomas-ziirsen/whep-video-component",
   "version": "0.1.0",
   "description": "WHEP video web-component",
   "main": "dist/whep-video.component.js",
@@ -7,24 +7,16 @@
     "build": "rm -rf dist/ && webpack --config webpack.config.js",
     "dev": "webpack-dev-server --hot",
     "postversion": "git push && git push --tags",
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
     "dist"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Eyevinn/whep-video-component.git"
-  },
   "keywords": [
     "WHEP"
   ],
   "author": "Eyevinn Technology AB <work@eyevinn.se>",
+  "contributors": ["Thomas Ziirsen"],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Eyevinn/whep-video-component/issues"
-  },
-  "homepage": "https://github.com/Eyevinn/whep-video-component#readme",
   "dependencies": {
     "@eyevinn/webrtc-player": "^0.12.0"
   },
