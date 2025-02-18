@@ -1,7 +1,6 @@
 import { WebRTCPlayer } from "@eyevinn/webrtc-player";
 
 export default class WhepVideoComponent extends HTMLElement {
-
   static get observedAttributes() {}
 
   constructor() {
@@ -36,28 +35,36 @@ export default class WhepVideoComponent extends HTMLElement {
       await this.player.load(new URL(src));
       this.video.autoplay = autoplay ?? false;
       this.video.muted = muted ?? true;
-    
+
       this.dispatchEvent(new CustomEvent("onIsStreaming", { detail: { src } }));
 
       setTimeout(() => {
         this.player.peer.onconnectionstatechange = (event) => {
-          this.onStateUpdates({
-            source: "onconnectionstatechange",
-            signalingState: this.player.peer.signalingState,
-            connectionState: this.player.peer.connectionState,
-            iceConnectionState: this.player.peer.iceConnectionState,
-            iceGatheringState: this.player.peer.iceGatheringState,
-          });
+          this.dispatchEvent(
+            new CustomEvent("onStateUpdates", {
+              detail: {
+                source: "onconnectionstatechange",
+                signalingState: this.player.peer.signalingState,
+                connectionState: this.player.peer.connectionState,
+                iceConnectionState: this.player.peer.iceConnectionState,
+                iceGatheringState: this.player.peer.iceGatheringState,
+              },
+            })
+          );
         };
 
         this.player.peer.onsignalingstatechange = (event) => {
-          this.onStateUpdates({
-            source: "onsignalingstatechange",
-            signalingState: this.player.peer.signalingState,
-            connectionState: this.player.peer.connectionState,
-            iceConnectionState: this.player.peer.iceConnectionState,
-            iceGatheringState: this.player.peer.iceGatheringState,
-          });
+          this.dispatchEvent(
+            new CustomEvent("onStateUpdates", {
+              detail: {
+                source: "onsignalingstatechange",
+                signalingState: this.player.peer.signalingState,
+                connectionState: this.player.peer.connectionState,
+                iceConnectionState: this.player.peer.iceConnectionState,
+                iceGatheringState: this.player.peer.iceGatheringState,
+              },
+            })
+          );
         };
       }, 250);
     } catch (e) {
@@ -65,12 +72,7 @@ export default class WhepVideoComponent extends HTMLElement {
     }
   }
 
-  async attributeChangedCallback(name) {
-  }
-
-  onStateUpdates(callback) {
-    return callback(data);
-  }
+  async attributeChangedCallback(name) {}
 
   onStopPlayer() {
     this.player.stop();
